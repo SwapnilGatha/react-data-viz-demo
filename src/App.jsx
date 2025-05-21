@@ -2,6 +2,10 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Link, Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import About from './pages/About'
+import Config from './pages/Config'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,22 +16,26 @@ function App() {
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
       </div>
-      <h1> + React</h1>
-      <h1>Dashboard</h1>
+
+
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <nav style={{ padding: '1rem', background: '#f0f0f0' }}>
+          <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
+          <Link to="/about" style={{ marginRight: '1rem' }}>About</Link>
+          <Link to="/config" style={{ marginRight: '1rem' }}>Config</Link>
+        </nav>
+        <h2> Vite DataViz</h2>
+        <Routes>
+          <Route>
+            <Route path='/' element={<Home />}></Route>
+            <Route path='/about' element={<About />}></Route>
+            <Route path='/config' element={<Config />}></Route>
+          </Route>
+        </Routes>
       </div>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        Copyright swapnil - @2025
       </p>
     </>
   )
